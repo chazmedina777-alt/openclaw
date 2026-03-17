@@ -1,4 +1,4 @@
-import { INTERNAL_MESSAGE_CHANNEL } from "../../utils/message-channel.js";
+import { INTERNAL_MESSAGE_CHANNEL } from "../../utils/internal-message-channel.js";
 import type { TypingPolicy } from "../types.js";
 
 export type ResolveRunTypingPolicyParams = {

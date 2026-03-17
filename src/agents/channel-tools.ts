@@ -1,10 +1,10 @@
+import { normalizeAnyChannelId } from "../channels/normalize-any.js";
 import { getChannelPlugin, listChannelPlugins } from "../channels/plugins/index.js";
 import type {
   ChannelAgentTool,
   ChannelMessageActionName,
   ChannelPlugin,
 } from "../channels/plugins/types.js";
-import { normalizeAnyChannelId } from "../channels/registry.js";
 import type { OpenClawConfig } from "../config/config.js";
 import { defaultRuntime } from "../runtime.js";
 

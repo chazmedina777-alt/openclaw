@@ -1,7 +1,5 @@
-import { requireActivePluginRegistry } from "../plugins/runtime.js";
 import { CHANNEL_IDS, CHAT_CHANNEL_ORDER, type ChatChannelId } from "./ids.js";
 import type { ChannelMeta } from "./plugins/types.js";
-import type { ChannelId } from "./plugins/types.js";
 export { CHANNEL_IDS, CHAT_CHANNEL_ORDER } from "./ids.js";
 export type { ChatChannelId } from "./ids.js";
 
@@ -142,29 +140,6 @@ export function normalizeChatChannelId(raw?: string | null): ChatChannelId | nul
 // `src/channels/plugins/*` can eagerly load channel implementations.
 export function normalizeChannelId(raw?: string | null): ChatChannelId | null {
   return normalizeChatChannelId(raw);
-}
-
-// Normalizes registered channel plugins (bundled or external).
-//
-// Keep this light: we do not import channel plugins here (those are "heavy" and can pull in
-// monitors, web login, etc). The plugin registry must be initialized first.
-export function normalizeAnyChannelId(raw?: string | null): ChannelId | null {
-  const key = normalizeChannelKey(raw);
-  if (!key) {
-    return null;
-  }
-
-  const registry = requireActivePluginRegistry();
-  const hit = registry.channels.find((entry) => {
-    const id = String(entry.plugin.id ?? "")
-      .trim()
-      .toLowerCase();
-    if (id && id === key) {
-      return true;
-    }
-    return (entry.plugin.meta.aliases ?? []).some((alias) => alias.trim().toLowerCase() === key);
-  });
-  return hit?.plugin.id ?? null;
 }
 
 export function formatChannelPrimerLine(meta: ChatChannelMeta): string {

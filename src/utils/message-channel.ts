@@ -13,9 +13,13 @@ import {
   normalizeGatewayClientName,
 } from "../gateway/protocol/client-info.js";
 import { getActivePluginRegistry } from "../plugins/runtime.js";
+import {
+  INTERNAL_MESSAGE_CHANNEL,
+  type InternalMessageChannel,
+} from "./internal-message-channel.js";
 
-export const INTERNAL_MESSAGE_CHANNEL = "webchat" as const;
-export type InternalMessageChannel = typeof INTERNAL_MESSAGE_CHANNEL;
+export { INTERNAL_MESSAGE_CHANNEL } from "./internal-message-channel.js";
+export type { InternalMessageChannel } from "./internal-message-channel.js";
 
 const MARKDOWN_CAPABLE_CHANNELS = new Set<string>([
   "slack",

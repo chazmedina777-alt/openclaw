@@ -8,7 +8,7 @@ import { findFenceSpanAt, isSafeFenceBreak, parseFenceSpans } from "../markdown/
 import { resolveAccountEntry } from "../routing/account-lookup.js";
 import { normalizeAccountId } from "../routing/session-key.js";
 import { chunkTextByBreakResolver } from "../shared/text-chunking.js";
-import { INTERNAL_MESSAGE_CHANNEL } from "../utils/message-channel.js";
+import { INTERNAL_MESSAGE_CHANNEL } from "../utils/internal-message-channel.js";
 
 export type TextChunkProvider = ChannelId | typeof INTERNAL_MESSAGE_CHANNEL;
 

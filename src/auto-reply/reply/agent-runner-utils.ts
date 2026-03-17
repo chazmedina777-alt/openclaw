@@ -1,8 +1,9 @@
 import { resolveRunModelFallbacksOverride } from "../../agents/agent-scope.js";
 import type { NormalizedUsage } from "../../agents/usage.js";
+import { normalizeAnyChannelId } from "../../channels/normalize-any.js";
 import { getChannelPlugin } from "../../channels/plugins/index.js";
 import type { ChannelId, ChannelThreadingToolContext } from "../../channels/plugins/types.js";
-import { normalizeAnyChannelId, normalizeChannelId } from "../../channels/registry.js";
+import { normalizeChannelId } from "../../channels/registry.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import { isReasoningTagProvider } from "../../utils/provider-utils.js";
 import { estimateUsageCost, formatTokenCount, formatUsd } from "../../utils/usage-format.js";
